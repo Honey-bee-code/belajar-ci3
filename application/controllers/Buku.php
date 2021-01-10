@@ -3,16 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Buku extends CI_Controller {
 
-    // function _construct()
-    // {
-    //     parent::_construct();
-    //     $this->load->model('buku_m');
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('buku_m');
         
-    // }
+    }
 
 	public function index()
 	{
-        $this->load->model('buku_m');
         $query = $this->buku_m->get();
         // $data['header'] = ('Show Data Buku');
         // $data['buku'] = $query -> result();
@@ -27,7 +26,6 @@ class Buku extends CI_Controller {
     
     public function proses()
     {
-        $this->load->model('buku_m');
         if (isset($_POST['tambah'])) {
             // $judul = $this->input->post('judul');
             // $pengarang = $this->input->post('pengarang');
@@ -52,7 +50,6 @@ class Buku extends CI_Controller {
 
     public function edit($id=null)
     {
-        $this->load->model('buku_m');
         $query = $this->buku_m->get($id);
         $data = array (
             'header' => 'Edit Data Buku',
@@ -65,7 +62,6 @@ class Buku extends CI_Controller {
 
     public function hapus($id)
     {
-        $this->load->model('buku_m');
         $this->buku_m->hapus($id);
         redirect('buku');
     }
